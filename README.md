@@ -36,6 +36,7 @@ QC-SIMD-LDPC-DECODER
         │   main.c                  // Example main source file
 ```
 
+
 Build and Execution Instructions
 ------------------------------------------------------------
 
@@ -48,3 +49,25 @@ Build and Execution Instructions
 
 ### Clean:
 > make clean
+
+Performance
+------------------------------------------------------------
+
+### Environment:
+* OS: Ubuntu 16.04 xenial
+* Kernel: x86_64 Linux 4.4.0-21-generic
+* CPU: 4x Intel Xeon Gold 6154 CPU @ 3.001GHz
+* ICC: 18.0.2
+
+### Simulation Parameter:
+
+* Base Graph: 5GNR Base Graph 1(i<sub>LS</sub> = 2)
+* Code Block Length: 8448
+* Code Rate: 948/1024
+
+### Result:
+| SIMD          | Throughput    | Code Block Latency    |
+| ------------- | ------------- | --------------------- |
+| SSE4.1        | 77.54Mbps     | 108.95μs              |
+| AVX2          | 145.14Mbps    | 58.21μs               |
+| AVX512        | 223.41Mbps    | 37.81μs               |

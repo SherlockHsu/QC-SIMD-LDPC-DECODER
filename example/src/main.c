@@ -187,8 +187,8 @@ int main()
 
 		/* print results */
 		printf("Eb/N0:%.2f:\tBER:\t%.2e(%d/%d)\n", EbN0_list[indx_ebn0], (float)sum_err_bits / B / BLOCK_SIZE, sum_err_bits, B * BLOCK_SIZE);
-		printf("encode_run_time:%lfs\n", encode_run_time);
-		printf("encode_Throughput:%.2lfMbps\n", (double)B * BLOCK_SIZE / encode_run_time / 1e6);
+		// printf("encode_run_time:%lfs\n", encode_run_time);
+		// printf("encode_Throughput:%.2lfMbps\n", (double)B * BLOCK_SIZE / encode_run_time / 1e6);
 		printf("decode_run_time:%lfs\n", decode_run_time);
 		printf("decode_Throughput:%.2lfMbps\n", (double)B * BLOCK_SIZE / decode_run_time / 1e6);
 		fprintf(fp, "%.2e\t", (float)sum_err_bits / B / BLOCK_SIZE);
