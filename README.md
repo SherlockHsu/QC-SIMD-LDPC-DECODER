@@ -42,6 +42,7 @@ Build and Execution Instructions
 
 ### Build:
 > cd example
+
 > make
 
 ### Execution:
