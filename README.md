@@ -23,17 +23,26 @@ QC-SIMD-LDPC-DECODER
 │   │   qc_simd_ldpc_decoder.lib    // Static library for Windows
 │   
 └───example
-    │   Makefile
+    └───tb_ldpc
+    │   │   Makefile
+    │   │
+    │   └───inc
+    │   │   │   simd_ldpc.h             // 5GNR LDPC head file
+    │   │
+    │   └───lib
+    │   │   │   libsimd_ldpc.a          // 5GNR LDPC Static library for Linux
+    │   │   │   simd_ldpc.lib           // 5GNR LDPC Static library for Windows
+    │   │   
+    │   └───src
+    │       │   main.c                  // Example main source file
     │
-    └───inc
-    │   │   simd_ldpc.h             // Example head file
-    │
-    └───lib
-    │   │   libsimd_ldpc.a          // Example Static library for Linux
-    │   │   simd_ldpc.lib           // Example Static library for Windows
-    │   
-    └───src
-        │   main.c                  // Example main source file
+    └───mex_function
+        │   test.m                      // Test m file
+        │   test_param.mat              // Test parameters and data
+        │   mex_qc_ldpc_decoder.mexw64  // Mex function
+        │
+        └───src
+            │   mex_qc_ldpc_decoder.c   // interface source file
 ```
 
 
