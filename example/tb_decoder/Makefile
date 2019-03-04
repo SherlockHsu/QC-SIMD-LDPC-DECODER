@@ -4,9 +4,9 @@ OBJS = $(SRCS:.c = .o)
 
 CC = icc
 
-INC = -I./inc -I../inc
+INC = -I./inc -I../../inc
 
-LIBS = -lm -lpthread -lmkl_rt -fopenmp ./lib/libsimd_ldpc.a ../lib/libqc_simd_ldpc_decoder.a
+LIBS = -lm -lpthread -lmkl_rt -fopenmp ./lib/libsimd_ldpc.a ../../lib/libqc_simd_ldpc_decoder.a
 
 CCFLAGS = -Wall -O3 -std=c99
 
