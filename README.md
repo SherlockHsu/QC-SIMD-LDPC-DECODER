@@ -50,7 +50,7 @@ Build and Execution Instructions
 ------------------------------------------------------------
 
 ### Build:
-> cd example
+> cd example/tb_ldpc
 
 > make
 
