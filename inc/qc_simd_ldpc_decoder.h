@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <immintrin.h>
 
+#define SIMD_MODE_AUTO 0
 #define SIMD_MODE_SSE 1
 #define SIMD_MODE_AVX2 2
 #define SIMD_MODE_AVX512 3
@@ -39,13 +40,13 @@ typedef struct qc_simd_ldpc_decoder_t
 	__m128i *vn_msg_sse;		 // temp sse message from vn to cn(length:19)
 	__m128i *mask_sse;			 // mask1 for flag=2(length:whole_degree)
 	__m128i *mask_pre_sse;		 // mask2 for flag=2(length:whole_degree)
-	__m128i endmask_sse;		 // mask for flag=1
+	__m128i *endmask_sse;		 // mask for flag=1
 
 	__m256i *cn_msg_avx2;		 // avx2 message from cn to vn(length:M_whole)
 	__m256i *vn_msg_avx2;		 // temp avx2 message from vn to cn(length:19)
 	__m256i *mask_avx2;			 // mask1 for flag=2(length:whole_degree)
 	__m256i *mask_pre_avx2;		 // mask2 for flag=2(length:whole_degree)
-	__m256i endmask_avx2;		 // mask for flag=1
+	__m256i *endmask_avx2;		 // mask for flag=1
 
 	__m512i *cn_msg_avx512;		 // avx512 message from cn to vn(length:M_whole)
 	__m512i *vn_msg_avx512;		 // temp avx512 message from vn to cn(length:19)
@@ -67,7 +68,7 @@ typedef struct qc_simd_ldpc_decoder_t
 * Return:
 *	0: Normal, -1: Error
 */
-int qc_simd_ldpc_decoder_mem_init(int32_t max_col_hbg, int32_t max_row_hbg, int32_t max_zc, qc_simd_ldpc_decoder_t *h);
+int qc_simd_ldpc_decoder_mem_init(int32_t max_col_hbg, int32_t max_row_hbg, int32_t max_zc, int32_t simd_mode, qc_simd_ldpc_decoder_t *h);
 
 /*
 * Function:
@@ -83,7 +84,7 @@ int qc_simd_ldpc_decoder_mem_init(int32_t max_col_hbg, int32_t max_row_hbg, int3
 * Return:
 *	0: Normal, -1: Error
 */
-int qc_simd_ldpc_decoder_param_init(const int16_t *H_bg, int32_t col_hbg, int32_t row_hbg, int32_t Z_c, int32_t K, int32_t llr_len, qc_simd_ldpc_decoder_t *h);
+int qc_simd_ldpc_decoder_param_init(const int16_t *H_BG, int32_t col_hbg, int32_t row_hbg, int32_t Z_c, int32_t K, int32_t llr_len, qc_simd_ldpc_decoder_t *h);
 
 /*
 * Function:

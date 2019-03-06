@@ -1,26 +1,26 @@
-SRCS = $(wildcard ./src/*.c)
+CC = gcc# Compiler
 
-OBJS = $(SRCS:.c = .o)
+SRCS = ./src/main.c
 
-CC = icc
+OBJS = $(SRCS:.c = .o)# Object Files
 
-INC = -I./inc -I../../inc
+INCS = -I../../inc -I./inc# Head File Directory
 
-LIBS = -lm -lpthread -lmkl_rt -fopenmp ./lib/libsimd_ldpc.a ../../lib/libqc_simd_ldpc_decoder.a
+LIBS = -lm ../../lib/libqc_simd_ldpc_decoder_x86.a ./lib/libnr5g_simd_ldpc_encoder_x86.a# Library Files
 
-CCFLAGS = -Wall -O3 -std=c99
+CCFLAGS = -Wall -O3 -std=c99 #-m64# Flags for Compiler
 
-OUTPUT = main
+TARGET = main# Target Name
 
-all:$(OUTPUT)
+all:$(TARGET)
 
-$(OUTPUT) : $(OBJS)
-	$(CC) $^ -o $@ $(INC) $(LIBS)
+$(TARGET) : $(OBJS)
+	$(CC) $^ -o $@ $(INCS) $(LIBS) $(CCFLAGS)
 
 %.o : %.c
 	$(CC) -c $< $(CCFLAGS)
 
 clean:
-	rm -rf main *.o *.txt    #清除中间文件及生成文件
+	rm -rf main *.o *.txt
 
 .PHONY:clean

@@ -3,8 +3,8 @@ QC-SIMD-LDPC-DECODER
 
 Universal Quasi-Cyclic SIMD-LDPC decoder supporting SSE, AVX2 and AVX512.
 
-* Vesion:   1.1
-* Date:     2019.03.02
+* Vesion:   1.2
+* Date:     2019.03.06
 * Author:   Xu Yi
 
 File Specification
@@ -16,30 +16,34 @@ QC-SIMD-LDPC-DECODER
 │   LICENSE
 │
 └───inc
-│   │   qc_simd_ldpc_decoder.h      // Head file
+│   │   qc_simd_ldpc_decoder.h                  // Head file
 │   
 └───lib
-│   │   libqc_simd_ldpc_decoder.a   // Static library for Linux
-│   │   qc_simd_ldpc_decoder.lib    // Static library for Windows
+│   │   libqc_simd_ldpc_decoder_x86.a           // Static library for x86 Linux
+│   │   libqc_simd_ldpc_decoder_x64.a           // Static library for x64 Linux
+│   │   qc_simd_ldpc_decoder_x86.lib            // Static library for x86 Windows
+│   │   qc_simd_ldpc_decoder_x64.lib            // Static library for x64 Windows
 │   
 └───example
     └───tb_ldpc
     │   │   Makefile
     │   │
     │   └───inc
-    │   │   │   simd_ldpc.h             // 5GNR LDPC head file
+    │   │   │   nr5g_simd_ldpc_encoder.h        // 5GNR LDPC head file
     │   │
     │   └───lib
-    │   │   │   libsimd_ldpc.a          // 5GNR LDPC Static library for Linux
-    │   │   │   simd_ldpc.lib           // 5GNR LDPC Static library for Windows
+    │   │   │   libnr5g_simd_ldpc_encoder_x86.a // 5GNR LDPC Encoder Static library for x86 Linux
+    │   │   │   libnr5g_simd_ldpc_encoder_x64.a // 5GNR LDPC Encoder Static library for x64 Linux
+    │   │   │   nr5g_simd_ldpc_encoder_x86.lib  // 5GNR LDPC Encoder Static library for x86 Windows
+    │   │   │   nr5g_simd_ldpc_encoder_x64.lib  // 5GNR LDPC Encoder Static library for x64 Windows
     │   │   
     │   └───src
-    │       │   main.c                  // Example main source file
+    │       │   main.c                          // Example main source file
     │
     └───mex_function
-        │   test.m                      // Test m file
-        │   test_param.mat              // Test parameters and data
-        │   mex_qc_ldpc_decoder.mexw64  // Mex function
+        │   test.m                              // Test m file
+        │   test_param.mat                      // Test parameters and data
+        │   mex_qc_ldpc_decoder.mexw64          // Mex function
         │
         └───src
             │   mex_qc_ldpc_decoder.c   // interface source file

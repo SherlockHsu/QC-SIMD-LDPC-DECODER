@@ -1,3 +1,6 @@
+clear;
+close all;
+
 load("test_param.mat");
 N = 10000;
 tic;
