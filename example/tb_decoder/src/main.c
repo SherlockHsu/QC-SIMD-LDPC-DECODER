@@ -33,18 +33,19 @@ int main()
     long timeuse;
 #endif
 
-    float EbN0_list[EBN0_SIZE] = {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
+    float EbN0_list[EBN0_SIZE] = {0.0, 3.0, 6.0, 12.0, 15.0, 18.0};
     test_size = EBN0_SIZE;
 
     int Z_c = 384;
+    int R = 984;
     int BG_sel = 1;
     int iLS = 2;
-    int llr_num = 9984;
     nr5g_simd_ldpc_encoder_t *he = (nr5g_simd_ldpc_encoder_t *)malloc(sizeof(nr5g_simd_ldpc_encoder_t));
     nr5g_simd_ldpc_encoder_mem_init(Z_c, SIMD_MODE_AUTO, he);
     nr5g_simd_ldpc_encoder_param_init(BG_sel, iLS, Z_c, he);
     int K = he->K;
     int N = he->N;
+    int llr_num = (int)((float)K / R * 1024) + 2 * Z_c;
     int col_hbg = he->col_hbg;
     int row_hbg = he->row_hbg;
     int8_t *info_bits = (int8_t *)malloc(sizeof(int8_t) * K);
@@ -62,7 +63,7 @@ int main()
     float *awgn;
     awgn = (float *)malloc(llr_num * sizeof(float));
     srand((unsigned)time(&t));
-    for (j = 0; j < llr_num; j++)
+    for (j = 2 * Z_c; j < llr_num; j++)
         awgn[j] = randn(0.0, 1.0);
 
     for (indx_ebn0 = 0; indx_ebn0 < test_size; indx_ebn0++)
